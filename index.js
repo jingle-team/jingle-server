@@ -6,6 +6,7 @@ require('dotenv').config();
 
 
 const mongoose = require('mongoose');
+console.log("Attempting to connect to Database URI: " + process.env.DATABASE_URL)
 let dev_db_url = process.env.DATABASE_URL;
 let mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB, { useNewUrlParser: true });

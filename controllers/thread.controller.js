@@ -1,6 +1,6 @@
 // Imports message and thread models
 const Message = require('../models/message.model');
-const Thread = require('..models/thread.model')
+const Thread = require('../models/thread.model')
 
 // Exports the thread_create method for index.js. Creates the thread and saves it to the database
 exports.thread_create = function (req, res) {
