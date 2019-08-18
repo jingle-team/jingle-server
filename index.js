@@ -1,21 +1,27 @@
 const express = require('express');
 const app = express();
 const router = express.Router();
-const mongoo = require('mongodb');
+const mongodb = require('mongodb');
+require('dotenv').config();
 
 
 const mongoose = require('mongoose');
-let dev_db_url = 'put ur db here';
+let dev_db_url = process.env.DATABASE_URL;
 let mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+
 
 const user = require('./routes/user.route');
+const message = require('./routes/message.route');
 
 app.use('/users', user);
+app.use('/messages', message);
 
 
 /* GET home page. */

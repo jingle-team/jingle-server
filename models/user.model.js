@@ -1,9 +1,14 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+// Schema for users
 let UserSchema = new Schema({
-    name: {type: String, required: true, max: 100},
-    price: {type: Number, required: true},
+     id:  Number,
+     profilePicture: String,
+     name:   String,
+     friends: [],
+     servers: [],
+     password: String
 });
 
 
